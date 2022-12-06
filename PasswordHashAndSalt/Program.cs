@@ -80,7 +80,7 @@ void Register()
     Console.WriteLine("================ REGISTER ================");
 
     Console.Write("User Name: ");
-    var name = Console.ReadLine();
+    var name = Console.ReadLine().ToLower();
 
     Console.Write("Password: ");
     var password = Console.ReadLine();
@@ -89,7 +89,7 @@ void Register()
 
     var salt = DateTime.Now.ToString();
 
-    // Hashing the password that user gave to register
+    // Hashing (with salt) the password that user gave to register
     var hashedPassword = HashPassword($"{password}{salt}");
 
     context.Users.Add(new User() { Name = name, Password = hashedPassword, Salt = salt });
