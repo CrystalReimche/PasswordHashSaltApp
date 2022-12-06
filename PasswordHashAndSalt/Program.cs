@@ -6,6 +6,7 @@ Prompt();
 
 void Prompt()
 {
+    Console.ResetColor();
     Console.Clear();
 
     Console.WriteLine("[R] Register\n[L] Login");
@@ -59,7 +60,16 @@ void Login()
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Login Failed");
-            Console.ReadLine();
+            // Console.ReadLine();
+            while (true)
+            {
+                Console.ResetColor();
+                Console.WriteLine("[B] Back");
+                if (Console.ReadKey().Key == ConsoleKey.B)
+                {
+                    Prompt();
+                }
+            }
         }
     }
 }
